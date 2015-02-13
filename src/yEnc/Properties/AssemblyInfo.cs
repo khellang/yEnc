@@ -2,7 +2,7 @@
 using System.Reflection;
 
 [assembly: AssemblyTitle("yEnc")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A tiny library for yEncoding and decoding with .NET")]
 [assembly: AssemblyCompany("Kristian Hellang")]
 [assembly: AssemblyProduct("yEnc")]
 [assembly: AssemblyCopyright("Copyright © Kristian Hellang 2015")]
