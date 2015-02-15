@@ -16,6 +16,7 @@ namespace yEnc
             LookupTable = CreateLookupTable();
         }
 
+        [Pure]
         public static uint CalculateChecksum([NotNull] byte[] buffer)
         {
             Check.NotNull(buffer, "buffer");

@@ -6,6 +6,7 @@ namespace yEnc
 {
     internal static class DictionaryExtensions
     {
+        [Pure]
         public static T GetAndConvert<T>([NotNull] this IDictionary<string, string> dictionary, [NotNull] string key, [NotNull] Func<string, T> converter)
         {
             Check.NotNull(dictionary, "dictionary");
@@ -16,6 +17,7 @@ namespace yEnc
             return dictionary.TryGetValue(key, out stringValue) ? converter.Invoke(stringValue) : default(T);
         }
 
+        [Pure]
         public static T GetOrDefault<T>([NotNull] this IDictionary<string, T> dictionary, [NotNull] string key)
         {
             Check.NotNull(dictionary, "dictionary");

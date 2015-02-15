@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.IO;
+using JetBrains.Annotations;
 
 namespace yEnc
 {
@@ -8,12 +9,13 @@ namespace yEnc
     {
         private readonly Stream _innerStream;
 
-        internal YEncDecodedStream(Stream innerStream, string fileName)
+        internal YEncDecodedStream([NotNull] Stream innerStream, [NotNull] string fileName)
         {
-            FileName = fileName;
-            _innerStream = innerStream;
+            FileName = Check.NotEmpty(fileName, "fileName");
+            _innerStream = Check.NotNull(innerStream, "innerStream");
         }
 
+        [NotNull]
         public string FileName { get; private set; }
 
         public override bool CanRead

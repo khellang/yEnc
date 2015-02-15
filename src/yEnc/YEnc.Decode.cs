@@ -19,7 +19,7 @@ namespace yEnc
         /// <param name="stream">The stream.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull]
+        [NotNull, Pure]
         public static Task<YEncDecodedStream> Decode([NotNull] Stream stream,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -33,7 +33,7 @@ namespace yEnc
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull]
+        [NotNull, Pure]
         public static Task<YEncDecodedStream> Decode([NotNull] Stream stream,
             [NotNull] System.Text.Encoding encoding,
             CancellationToken cancellationToken = default(CancellationToken))
@@ -49,7 +49,7 @@ namespace yEnc
         /// <param name="streams">The streams.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull]
+        [NotNull, Pure]
         public static Task<YEncDecodedStream> Decode([NotNull] IEnumerable<Stream> streams,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -63,7 +63,7 @@ namespace yEnc
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull]
+        [NotNull, Pure]
         public static async Task<YEncDecodedStream> Decode([NotNull] IEnumerable<Stream> streams,
             [NotNull] System.Text.Encoding encoding,
             CancellationToken cancellationToken = default(CancellationToken))
