@@ -82,11 +82,13 @@ namespace yEnc
 
                     fileName = header.Value.Name;
 
-                    using (var decodedPartStream = new MemoryStream())
+                    using (var decodedPartStream = new MemoryBlockStream())
                     {
                         string currentLine;
                         while ((currentLine = await reader.ReadLineAsync()) != null)
                         {
+                            cancellationToken.ThrowIfCancellationRequested();
+
                             if (currentLine.StartsWith(YEncConstants.PartHeader))
                             {
                                 var partHeader = ParsePartHeader(currentLine);

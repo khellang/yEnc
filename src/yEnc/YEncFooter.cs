@@ -1,5 +1,3 @@
-using System.IO;
-
 namespace yEnc
 {
     internal struct YEncFooter
@@ -20,7 +18,7 @@ namespace yEnc
 
         public uint? PartCrc32 { get; }
 
-        public void Validate(YEncHeader header, MemoryStream decodedPartStream)
+        public void Validate(YEncHeader header, MemoryBlockStream decodedPartStream)
         {
             if (!MatchesPart(header))
             {
