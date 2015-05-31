@@ -2,24 +2,14 @@ namespace yEnc
 {
     internal struct YEncPartHeader
     {
-        private readonly long _begin;
-
-        private readonly long _end;
-
         public YEncPartHeader(long begin, long end)
         {
-            _begin = begin;
-            _end = end;
+            Begin = begin;
+            End = end;
         }
 
-        public long Begin
-        {
-            get { return _begin; }
-        }
+        public long Begin { get; }
 
-        public long End
-        {
-            get { return _end; }
-        }
+        public long End { get; }
     }
 }

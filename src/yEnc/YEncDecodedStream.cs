@@ -7,71 +7,41 @@ namespace yEnc
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class YEncDecodedStream : Stream
     {
-        private readonly Stream _innerStream;
-
         internal YEncDecodedStream([NotNull] Stream innerStream, [NotNull] string fileName)
         {
-            FileName = Check.NotEmpty(fileName, "fileName");
-            _innerStream = Check.NotNull(innerStream, "innerStream");
+            InnerStream = Check.NotNull(innerStream, nameof(innerStream));
+            FileName = Check.NotEmpty(fileName, nameof(fileName));
         }
 
         [NotNull]
-        public string FileName { get; private set; }
+        public string FileName { get; }
 
-        public override bool CanRead
-        {
-            get { return _innerStream.CanRead; }
-        }
+        private Stream InnerStream { get; }
 
-        public override bool CanSeek
-        {
-            get { return _innerStream.CanSeek; }
-        }
+        public override bool CanRead => InnerStream.CanRead;
 
-        public override bool CanWrite
-        {
-            get { return _innerStream.CanWrite; }
-        }
+        public override bool CanSeek => InnerStream.CanSeek;
 
-        public override long Length
-        {
-            get { return _innerStream.Length; }
-        }
+        public override bool CanWrite => InnerStream.CanWrite;
+
+        public override long Length => InnerStream.Length;
 
         public override long Position
         {
-            get { return _innerStream.Position; }
-            set { _innerStream.Position = value; }
+            get { return InnerStream.Position; }
+            set { InnerStream.Position = value; }
         }
 
-        private string DebuggerDisplay
-        {
-            get { return string.Format("FileName: {0}, Length: {1}", FileName, Length); }
-        }
+        private string DebuggerDisplay => $"FileName: {FileName}, Length: {Length}";
 
-        public override void Flush()
-        {
-            _innerStream.Flush();
-        }
+        public override void Flush() => InnerStream.Flush();
 
-        public override long Seek(long offset, SeekOrigin origin)
-        {
-            return _innerStream.Seek(offset, origin);
-        }
+        public override long Seek(long offset, SeekOrigin origin) => InnerStream.Seek(offset, origin);
 
-        public override void SetLength(long value)
-        {
-            _innerStream.SetLength(value);
-        }
+        public override void SetLength(long value) => InnerStream.SetLength(value);
 
-        public override int Read(byte[] buffer, int offset, int count)
-        {
-            return _innerStream.Read(buffer, offset, count);
-        }
+        public override int Read(byte[] buffer, int offset, int count) => InnerStream.Read(buffer, offset, count);
 
-        public override void Write(byte[] buffer, int offset, int count)
-        {
-            _innerStream.Write(buffer, offset, count);
-        }
+        public override void Write(byte[] buffer, int offset, int count) => InnerStream.Write(buffer, offset, count);
     }
 }

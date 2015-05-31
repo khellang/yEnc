@@ -19,15 +19,12 @@ namespace yEnc
         [Pure]
         public static uint CalculateChecksum([NotNull] byte[] buffer)
         {
-            Check.NotNull(buffer, "buffer");
+            Check.NotNull(buffer, nameof(buffer));
 
             return buffer.Aggregate(Seed, (u, b) => Lookup(u, b), value => value ^ Seed);
         }
 
-        private static uint Lookup(uint value, byte b)
-        {
-            return (value >> 8) ^ LookupTable[(value & 0xFF) ^ b];
-        }
+        private static uint Lookup(uint value, byte b) => (value >> 8) ^ LookupTable[(value & 0xFF) ^ b];
 
         private static uint[] CreateLookupTable()
         {

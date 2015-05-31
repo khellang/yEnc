@@ -2,40 +2,20 @@ namespace yEnc
 {
     internal struct YEncHeader
     {
-        private readonly int _line;
-
-        private readonly string _name;
-
-        private readonly int? _part;
-
-        private readonly long _size;
-
         public YEncHeader(string name, long size, int line, int? part)
         {
-            _name = name;
-            _size = size;
-            _line = line;
-            _part = part;
+            Name = name;
+            Size = size;
+            Line = line;
+            Part = part;
         }
 
-        public string Name
-        {
-            get { return _name; }
-        }
+        public string Name { get; }
 
-        public long Size
-        {
-            get { return _size; }
-        }
+        public long Size { get; }
 
-        public int Line
-        {
-            get { return _line; }
-        }
+        public int Line { get; }
 
-        public int? Part
-        {
-            get { return _part; }
-        }
+        public int? Part { get; }
     }
 }

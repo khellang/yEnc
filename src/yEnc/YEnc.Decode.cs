@@ -9,6 +9,7 @@ namespace yEnc
 {
     public static partial class YEnc
     {
+        [PublicAPI, NotNull]
         public static readonly System.Text.Encoding DefaultEncoding = System.Text.Encoding.GetEncoding("iso-8859-1");
 
         private static readonly char[] HeaderSeparators = { ' ' };
@@ -19,12 +20,10 @@ namespace yEnc
         /// <param name="stream">The stream.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull, Pure]
+        [PublicAPI, NotNull, Pure]
         public static Task<YEncDecodedStream> Decode([NotNull] Stream stream,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Decode(stream, DefaultEncoding, cancellationToken);
-        }
+            CancellationToken cancellationToken = default(CancellationToken)) =>
+                Decode(stream, DefaultEncoding, cancellationToken);
 
         /// <summary>
         /// Decodes the specified stream, using the specified encoding.
@@ -33,15 +32,11 @@ namespace yEnc
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull, Pure]
+        [PublicAPI, NotNull, Pure]
         public static Task<YEncDecodedStream> Decode([NotNull] Stream stream,
             [NotNull] System.Text.Encoding encoding,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            Check.NotNull(stream, "stream");
-
-            return Decode(new[] { stream }, encoding, cancellationToken);
-        }
+            CancellationToken cancellationToken = default(CancellationToken)) =>
+                Decode(new[] { Check.NotNull(stream, nameof(stream)) }, encoding, cancellationToken);
 
         /// <summary>
         /// Decodes the specified streams, using <see cref="DefaultEncoding" />.
@@ -49,12 +44,10 @@ namespace yEnc
         /// <param name="streams">The streams.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull, Pure]
+        [PublicAPI, NotNull, Pure]
         public static Task<YEncDecodedStream> Decode([NotNull] IEnumerable<Stream> streams,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Decode(streams, DefaultEncoding, cancellationToken);
-        }
+            CancellationToken cancellationToken = default(CancellationToken)) =>
+                Decode(streams, DefaultEncoding, cancellationToken);
 
         /// <summary>
         /// Decodes the specified streams, using the specified encoding.
@@ -63,13 +56,13 @@ namespace yEnc
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <exception cref="YEncException">The decoding failed.</exception>
-        [NotNull, Pure]
+        [PublicAPI, NotNull, Pure]
         public static async Task<YEncDecodedStream> Decode([NotNull] IEnumerable<Stream> streams,
             [NotNull] System.Text.Encoding encoding,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            Check.NotNull(streams, "streams");
-            Check.NotNull(encoding, "encoding");
+            Check.NotNull(streams, nameof(streams));
+            Check.NotNull(encoding, nameof(encoding));
 
             var decodedStream = new MemoryStream();
 

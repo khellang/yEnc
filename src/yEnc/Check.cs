@@ -23,7 +23,7 @@ namespace yEnc
                 return value;
             }
 
-            NotEmpty(parameterName, "parameterName");
+            NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentNullException(parameterName, Strings.ArgumentNull(parameterName));
         }
@@ -41,7 +41,7 @@ namespace yEnc
         {
             if (ReferenceEquals(value, null))
             {
-                NotEmpty(parameterName, "parameterName");
+                NotEmpty(parameterName, nameof(parameterName));
 
                 throw new ArgumentNullException(parameterName, Strings.ArgumentNull(parameterName));
             }
@@ -50,7 +50,7 @@ namespace yEnc
 
             if (trimmedValue.Length == 0)
             {
-                NotEmpty(parameterName, "parameterName");
+                NotEmpty(parameterName, nameof(parameterName));
 
                 throw new ArgumentException(Strings.StringArgumentEmpty(parameterName), parameterName);
             }
