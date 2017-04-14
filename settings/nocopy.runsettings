@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <!-- Configure unit tests using .runsettings file: https://msdn.microsoft.com/en-us/library/jj635153.aspx -->
+  <MSTest>
+    <DeploymentEnabled>False</DeploymentEnabled>
+  </MSTest>
+</RunSettings>
