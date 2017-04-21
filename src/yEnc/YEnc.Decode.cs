@@ -92,8 +92,6 @@ namespace yEnc
                     foundFilePart = true;
                     if (decodedStream == null)
                     {
-                        // TODO: investigate seek error
-                        // decodedStream = new MemoryBlockStream();
                         decodedStream = new MemoryStream();
                     }
                     decodedStream.Seek(part.Offset, SeekOrigin.Begin);
