@@ -16,6 +16,8 @@
 
         public const string Part = "part";
 
+        public const string Total = "total";
+
         public const string Begin = "begin";
 
         public const string End = "end";
