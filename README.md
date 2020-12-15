@@ -1,6 +1,6 @@
 # yEnc [![Build status](https://ci.appveyor.com/api/projects/status/t12qq70iaumqmhr2/branch/master?svg=true)](https://ci.appveyor.com/project/khellang/yenc/branch/master)
 
-A tiny library for yEncoding and decoding with .NET
+A tiny library for yEnc decoding with .NET
 
 The library is implemented as a Portable Class Library (PCL), with support for the following platforms (minimum):
 
